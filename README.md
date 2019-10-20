@@ -2,8 +2,6 @@
 
 Queue<sup>fs</sup> is a simple queue data structure that implements the cannonical approach for functional queues with two lists (inbox, outbox).
 
-## Installation
-
 ## Usage
 
 Create a new queue:
