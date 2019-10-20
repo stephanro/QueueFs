@@ -72,7 +72,7 @@ let ``Queue.touch of empty list does not change state of queue`` () =
     Assert.Equal (expected, actual)
 
 [<Fact>]
-let ``Touch moves inbox to outbox`` () =
+let ``Queue.touch moves inbox to outbox`` () =
     let expected : int queue = Queue.fromTuple ([],[1; 2])
     let actual : int queue = 
         Queue.empty
@@ -82,7 +82,7 @@ let ``Touch moves inbox to outbox`` () =
     Assert.Equal (expected, actual)
 
 [<Fact>]
-let ``Touch appends inbox to outbox`` () =
+let ``Queue.touch appends inbox to outbox`` () =
     let expected : int queue = Queue.fromTuple ([],[1; 2; 3; 4])
     let actual : int queue =
         Queue.empty
@@ -95,7 +95,7 @@ let ``Touch appends inbox to outbox`` () =
     Assert.Equal (expected, actual)
 
 [<Fact>]
-let ``Convert list to queue`` () =
+let ``Queue.fromList composes queue from list`` () =
     let expected : int queue = Queue.fromTuple ([],[1; 2])
     let actual : int queue = 
         [1; 2]
@@ -103,7 +103,7 @@ let ``Convert list to queue`` () =
     Assert.Equal (expected, actual)
 
 [<Fact>]
-let ``Convert queue to list`` () =
+let ``Queue.toList decomposes queue to list`` () =
     let expected : int list = [1; 2]
     let actual : int list =
         [1; 2]
@@ -112,3 +112,22 @@ let ``Convert queue to list`` () =
     let condition : bool =
         expected = actual
     Assert.True (condition)
+
+[<Fact>]
+let ``Queue.toTuple decomposes queue to tuple`` () =
+    let expected : int list * int list = ([2; 1], [])
+    let actual : int list * int list =
+        Queue.empty
+        |> Queue.enqueue 1
+        |> Queue.enqueue 2
+        |> Queue.toTuple
+    Assert.Equal (expected, actual)
+
+[<Fact>]
+let ``Queue.fromTuple composes queue from tuple``() =
+    let expected : int queue =
+        Queue.empty
+        |> Queue.enqueue 1
+        |> Queue.enqueue 2
+    let actual : int queue = Queue.fromTuple ([2; 1], [])
+    Assert.Equal(expected, actual)
