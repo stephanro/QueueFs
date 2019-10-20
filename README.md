@@ -47,3 +47,13 @@ Append inbox to outbox:
 ```fsharp
 let q' = Queue.touch q
 ```
+
+Compose a queue from a tuple:
+```fsharp
+let q = Queue.fromTuple ([1; 2], [])
+```
+
+Decompose a queue into a tuple:
+```fsharp
+let t = Queue.toTuple q
+```
