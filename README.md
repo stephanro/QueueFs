@@ -10,7 +10,7 @@ let q : int queue = Queue.empty
 val q : int queue = Queue ([],[])
 ```
 
-Create a new queue and initialize it
+Create a new queue and initialize it:
 ```fsharp
 let q = Queue.init 1
 val q : int queue = Queue ([],[1])
@@ -28,7 +28,7 @@ let l = Queue.toList q
 val l : int list = [1; 2; 3; 4]
 ```
 
-Enqueue an item
+Enqueue an item:
 ```fsharp
 let q =
     Queue.empty
@@ -36,7 +36,7 @@ let q =
 val q : int queue = Queue ([2],[])
 ```
 
-Dequeue an item
+Dequeue an item:
 ```fsharp
 let q' = Queue.dequeue q
 val q' : int queue * int option = (Queue ([],[2; 3; 4]), Some 1)
@@ -47,7 +47,6 @@ Return the next item to be dequeued if there is any:
 let (q', i) = Queue.peek q
 val q' : int queue = Queue ([],[2; 3; 4])
 val i : int option = Some 2
-
 ```
 
 Append inbox to outbox:
